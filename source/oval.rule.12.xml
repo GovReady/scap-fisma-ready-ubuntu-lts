@@ -1,0 +1,154 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:1200" version="1">
+               <metadata>
+                    <title>SSH Configuration has been Secured</title>
+                    <description>Modify sshd_config settings and permissions to be more secure.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1200" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1201" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1202" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1203" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1204" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1205" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1206" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1207" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1208" />
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1200" version="1" check_existence="at_least_one_exists" check="at least one" comment="The ssh configuration file exists, it's owned by root:root and permissions are set to 600.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1200" />
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1200" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1201" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'X11Forwarding' setting is set to 'no'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1201" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1201" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1202" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'MaxAuthTries' setting is set to '4'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1202" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1202" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1203" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'PermitRootLogin' setting is set to 'no'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1203" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1201" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1204" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'PermitEmptyPasswords' setting is set to 'no'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1204" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1201" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1205" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'PermitUserEnvironment' setting is set to 'no'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1205" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1201" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1206" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'Ciphers' setting is set to 'aes128-ctr,aes192-ctr,aes256-ctr'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1206" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1203" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1207" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'ClientAliveInterval' setting is set to '600'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1207" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1204" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1208" version="1" check_existence="at_least_one_exists" check="all" comment="The ssh 'ClientAliveCountMax' setting is set to '0'">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1208" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1205" />
+          </ind-def:textfilecontent54_test>
+     </tests>
+     <objects>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1200" version="1" comment="The ssh configuration file: '/etc/ssh/sshd_config'">
+               <unix-def:filepath>/etc/ssh/sshd_config</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1201" version="1" comment="The content of the sshd_config setting 'X11Forwarding'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^X11Forwarding\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1202" version="1" comment="The content of the sshd_config setting 'MaxAuthTries'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^MaxAuthTries\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1203" version="1" comment="The content of the sshd_config setting 'PermitRootLogin'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^PermitRootLogin\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1204" version="1" comment="The content of the sshd_config setting 'PermitEmptyPasswords'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^PermitEmptyPasswords\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1205" version="1" comment="The content of the sshd_config setting 'PermitUserEnvironment'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^PermitUserEnvironment\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1206" version="1" comment="The content of the sshd_config setting 'Ciphers'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^Ciphers\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1207" version="1" comment="The content of the sshd_config setting 'ClientAliveInterval'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^ClientAliveInterval\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1208" version="1" comment="The content of the sshd_config setting 'ClientAliveCountMax'">
+               <ind-def:behaviors ignore_case="true" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/ssh/sshd_config</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^ClientAliveCountMax\s+"?\s*(.*)\s*"?\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+     </objects>
+     <states>
+           <unix-def:file_state id="oval:org.govready.ubuntu:ste:1200" version="1" comment="File is owned by root:root and permissions are 600 (rw- --- ---).">
+               <unix-def:group_id datatype="int">0</unix-def:group_id>
+               <unix-def:user_id datatype="int">0</unix-def:user_id>
+               <unix-def:uread datatype="boolean">1</unix-def:uread>
+               <unix-def:uwrite datatype="boolean">1</unix-def:uwrite>
+               <unix-def:uexec datatype="boolean">0</unix-def:uexec>
+               <unix-def:gread datatype="boolean">0</unix-def:gread>
+               <unix-def:gwrite datatype="boolean">0</unix-def:gwrite>
+               <unix-def:gexec datatype="boolean">0</unix-def:gexec>
+               <unix-def:oread datatype="boolean">0</unix-def:oread>
+               <unix-def:owrite datatype="boolean">0</unix-def:owrite>
+               <unix-def:oexec datatype="boolean">0</unix-def:oexec>
+          </unix-def:file_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1201" version="1" comment="Matches the value: 'no'">
+               <ind-def:subexpression operation="pattern match">\s*no\s*</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1202" version="1" comment="Matches the value: '4'">
+               <ind-def:subexpression operation="pattern match">\s*4\s*</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1203" version="1" comment="Matches the value: 'aes128-ctr,aes192-ctr,aes256-ctr'">
+               <ind-def:subexpression operation="pattern match">\s*aes128-ctr,aes192-ctr,aes256-ctr\s*</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1204" version="1" comment="Matches the value: '600'">
+               <ind-def:subexpression operation="pattern match">\s*600\s*</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1205" version="1" comment="Matches the value: '0'">
+               <ind-def:subexpression operation="pattern match">\s*0\s*</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+     </states>
+</oval_definitions>

@@ -1,0 +1,262 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:900" version="1">
+               <metadata>
+                    <title>Audit Rules are In Place</title>
+                    <description>Rules for auditd have been added for: date/time; user/passwords; networking; selinux; login &amp; logout; permission modifications; unauthorized access; filesytem mounts; file deletion; changes to sysadmin scope; and kernel loading.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:900" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:901" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:910" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:920" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:930" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:940" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:950" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:960" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:970" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:980" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:990" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:991" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:995" />
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:900" version="1" check_existence="at_least_one_exists" check="at least one" comment="The auditd rules file exists.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:900" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:901" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Date/time auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:902" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:903" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:904" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:905" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:910" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="User/passwords auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:910" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:911" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:912" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:913" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:914" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:920" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Network auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:920" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:921" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:922" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:923" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:924" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:925" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:930" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="SELinux auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:930" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:940" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Login and logout auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:940" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:941" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:942" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:950" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Permission modification auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:950" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:951" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:952" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:953" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:954" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:955" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:960" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Unauthorized access auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:960" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:961" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:962" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:963" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:970" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Collect filesystem mounts auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:970" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:971" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:980" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="File deletion auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:980" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:981" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:990" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Changes to sysadmin scope auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:990" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:991" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="Kernel loading auditd rules are in place">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:991" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:992" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:993" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:994" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:995" version="1" check_existence="at_least_one_exists" check="at least one" state_operator="AND" comment="auditd config is immutable">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:901" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:995" />
+          </ind-def:textfilecontent54_test>
+     </tests>
+     <objects>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:900" version="1" comment="The auditd rules file: '/etc/audit/audit.rules'">
+               <unix-def:filepath>/etc/audit/audit.rules</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:901" version="1" comment="The content of the auditd rules file: '/etc/audit/audit.rules'">
+               <ind-def:behaviors multiline="false" singleline="true" />               
+               <ind-def:filepath>/etc/audit/audit.rules</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^.*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+     </objects>
+     <states>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:901" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+adjtimex\s+-S\s+settimeofday\s+-k\s+time-change(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:902" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+adjtimex\s+-S\s+settimeofday\s+-S\s+stime\s+-k\s+time-change(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:903" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S clock_settime -k time-change'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+clock_settime\s+-k\s+time-change(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:904" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S clock_settime -k time-change'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+clock_settime\s+-k\s+time-change(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:905" version="1" comment="Matches the auditd rule: '-w /etc/localtime -p wa -k time-change'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/localtime\s+-p\s+wa\s+-k\s+time-change(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:910" version="1" comment="Matches the auditd rule: '-w /etc/group -p wa -k identity'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/group\s+-p\s+wa\s+-k\s+identity(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:911" version="1" comment="Matches the auditd rule: '-w /etc/passwd -p wa -k identity'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/passwd\s+-p\s+wa\s+-k\s+identity(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:912" version="1" comment="Matches the auditd rule: '-w /etc/gshadow -p wa -k identity'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/gshadow\s+-p\s+wa\s+-k\s+identity(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:913" version="1" comment="Matches the auditd rule: '-w /etc/shadow -p wa -k identity'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/shadow\s+-p\s+wa\s+-k\s+identity(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:914" version="1" comment="Matches the auditd rule: '-w /etc/security/opasswd -p wa -k identity'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/security/opasswd\s+-p\s+wa\s+-k\s+identity(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:920" version="1" comment="Matches the auditd rule: '-a exit,always -F arch=b64 -S sethostname -S setdomainname -k system-locale'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+exit,always\s+-F\s+arch=b64\s+-S\s+sethostname\s+-S\s+setdomainname\s+-k\s+system-locale(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:921" version="1" comment="Matches the auditd rule: '-a exit,always -F arch=b32 -S sethostname -S setdomainname -k system-locale'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+exit,always\s+-F\s+arch=b32\s+-S\s+sethostname\s+-S\s+setdomainname\s+-k\s+system-locale(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:922" version="1" comment="Matches the auditd rule: '-w /etc/issue -p wa -k system-locale'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/issue\s+-p\s+wa\s+-k\s+system-locale(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:923" version="1" comment="Matches the auditd rule: '-w /etc/issue.net -p wa -k system-locale'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/issue.net\s+-p\s+wa\s+-k\s+system-locale(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:924" version="1" comment="Matches the auditd rule: '-w /etc/hosts -p wa -k system-locale'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/hosts\s+-p\s+wa\s+-k\s+system-locale(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:925" version="1" comment="Matches the auditd rule: '-w /etc/network -p wa -k system-locale'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/network\s+-p\s+wa\s+-k\s+system-locale(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:930" version="1" comment="Matches the auditd rule: '-w /etc/selinux/ -p wa -k MAC-policy'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/selinux/\s+-p\s+wa\s+-k\s+MAC-policy(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:940" version="1" comment="Matches the auditd rule: '-w /var/log/faillog -p wa -k logins'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s*/var/log/faillog\s*-p\s*wa\s*-k\s*logins(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:941" version="1" comment="Matches the auditd rule: '-w /var/log/lastlog -p wa -k logins'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s*/var/log/lastlog\s*-p\s*wa\s*-k\s*logins(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:942" version="1" comment="Matches the auditd rule: '-w /var/log/tallylog -p wa -k logins'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s*/var/log/tallylog\s*-p\s*wa\s*-k\s*logins(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:950" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=500 -F auid!=4294967295 -k perm_mod'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+chmod\s+-S\s+fchmod\s+-S\s+fchmodat\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+perm_mod(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:951" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=500 -F auid!=4294967295 -k perm_mod'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+chmod\s+-S\s+fchmod\s+-S\s+fchmodat\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+perm_mod(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:952" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=500 -F auid!=4294967295 -k perm_mod'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+chown\s+-S\s+fchown\s+-S\s+fchownat\s+-S\s+lchown\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+perm_mod(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:953" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=500 -F auid!=4294967295 -k perm_mod'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+chown\s+-S\s+fchown\s+-S\s+fchownat\s+-S\s+lchown\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+perm_mod(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:954" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+setxattr\s+-S\s+lsetxattr\s+-S\s+fsetxattr\s+-S\s+removexattr\s+-S\s+lremovexattr\s+-S\s+fremovexattr\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+perm_mod(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:955" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+setxattr\s+-S\s+lsetxattr\s+-S\s+fsetxattr\s+-S\s+removexattr\s+-S\s+lremovexattr\s+-S\s+fremovexattr\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+perm_mod(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:960" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid&gt;=500 -F auid!=4294967295 -k access'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+creat\s+-S\s+open\s+-S\s+openat\s+-S\s+truncate\s+-S\s+ftruncate\s+-F\s+exit=-EACCES\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+access(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:961" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid&gt;=500 -F auid!=4294967295 -k access'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+creat\s+-S\s+open\s+-S\s+openat\s+-S\s+truncate\s+-S\s+ftruncate\s+-F\s+exit=-EACCES\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+access(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:962" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid&gt;=500 -F auid!=4294967295 -k access'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+creat\s+-S\s+open\s+-S\s+openat\s+-S\s+truncate\s+-S\s+ftruncate\s+-F\s+exit=-EPERM\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+access(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:963" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid&gt;=500 -F auid!=4294967295 -k access'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+creat\s+-S\s+open\s+-S\s+openat\s+-S\s+truncate\s+-S\s+ftruncate\s+-F\s+exit=-EPERM\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+access(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:970" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S mount -F auid>=500 -F auid!=4294967295 -k mounts'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+mount\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+mounts(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:971" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S mount -F auid>=500 -F auid!=4294967295 -k mounts'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+mount\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+mounts(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:980" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b64\s+-S\s+unlink\s+-S\s+unlinkat\s+-S\s+rename\s+-S\s+renameat\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+delete(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:981" version="1" comment="Matches the auditd rule: '-a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+-F\s+arch=b32\s+-S\s+unlink\s+-S\s+unlinkat\s+-S\s+rename\s+-S\s+renameat\s+-F\s+auid&gt;=500\s+-F\s+auid!=4294967295\s+-k\s+delete(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:990" version="1" comment="Matches the auditd rule: '-w /etc/sudoers -p wa -k scope'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/etc/sudoers\s+-p\s+wa\s+-k\s+scope(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:991" version="1" comment="Matches the auditd rule: '-w /sbin/insmod -p x -k modules'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/sbin/insmod\s+-p\s+x\s+-k\s+modules(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:992" version="1" comment="Matches the auditd rule: '-w /sbin/rmmod -p x -k modules'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/sbin/rmmod\s+-p\s+x\s+-k\s+modules(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:993" version="1" comment="Matches the auditd rule: '-w /sbin/modprobe -p x -k modules'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-w\s+/sbin/modprobe\s+-p\s+x\s+-k\s+modules(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:994" version="1" comment="Matches the auditd rule: '-a always,exit arch=b64 -S init_module -S delete_module -k modules'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-a\s+always,exit\s+arch=b64\s+-S\s+init_module\s+-S\s+delete_module\s+-k\s+modules(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:995" version="1" comment="Matches the auditd rule: '-e 2'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)-e\s+2(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+     </states>
+</oval_definitions>

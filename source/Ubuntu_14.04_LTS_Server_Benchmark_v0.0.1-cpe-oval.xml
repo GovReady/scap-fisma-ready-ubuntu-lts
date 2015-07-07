@@ -1,0 +1,50 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:50" version="1">
+               <metadata>
+                    <title>Check that Ubuntu LTS 14.04 is installed.</title>
+                    <description></description>
+               </metadata>
+               <criteria>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:50"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:51"/>
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <ind-def:family_test id="oval:org.govready.ubuntu:tst:50" check="at least one" check_existence="at_least_one_exists" version="1" comment="Test that the host is part of the unix family.">
+                <ind-def:object object_ref="oval:org.govready.ubuntu:obj:50"/>
+                <ind-def:state state_ref="oval:org.govready.ubuntu:ste:50"/>
+          </ind-def:family_test>
+          <unix-def:uname_test id="oval:org.govready.ubuntu:tst:51" check="at least one" check_existence="at_least_one_exists" version="1" comment="Test that the host is part of the unix family.">
+                <unix-def:object object_ref="oval:org.govready.ubuntu:obj:51"/>
+                <unix-def:state state_ref="oval:org.govready.ubuntu:ste:51"/>
+          </unix-def:uname_test>
+     </tests>
+     <objects>
+          <ind-def:family_object id="oval:org.govready.ubuntu:obj:50" check="at least one" check_existence="at_least_one_exists" version="1" comment="The singleton family object."/>
+          <unix-def:uname_object id="oval:org.govready.ubuntu:obj:51" check="at least one" check_existence="at_least_one_exists" version="1" comment="The singleton uname object."/>
+     </objects>
+     <states>
+          <ind-def:family_state id="oval:org.govready.ubuntu:ste:50" check="at least one" check_existence="at_least_one_exists" version="1" comment="The singleton family object.">
+               <ind-def:family>unix</ind-def:family>
+          </ind-def:family_state>
+          <unix-def:uname_state id="oval:org.govready.ubuntu:ste:51" version="1" comment="Ubuntu LTS 14.04">
+               <unix-def:os_name>Linux</unix-def:os_name>
+               <unix-def:os_release operation="pattern match">^3\.13\.0.*</unix-def:os_release>
+               <unix-def:os_version operation="pattern match">Ubuntu</unix-def:os_version>
+        </unix-def:uname_state>
+     </states>
+</oval_definitions>

@@ -1,0 +1,65 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:1300" version="1">
+               <metadata>
+                    <title>Banner Exists &amp; Has Correct Permission</title>
+                    <description>There should be a banner and it should have 644 file permissions.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1300" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1301" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1302" />
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1300" version="1" check_existence="at_least_one_exists" check="all" comment="The Message of the Day configuration file has permissions set to 644 (rw- r-- r--).">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1300" />
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1300" />
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1301" version="1" check_existence="at_least_one_exists" check="all" comment="The Login Banner configuration file has permissions set to 644 (rw- r-- r--).">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1301" />
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1300" />
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1302" version="1" check_existence="at_least_one_exists" check="all" comment="The Telnet Login Banner configuration file has permissions set to 644 (rw- r-- r--).">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1302" />
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1300" />
+          </unix-def:file_test>
+     </tests>
+     <objects>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1300" version="1" comment="The Message of the Day configuration file: '/etc/motd'">
+               <unix-def:filepath>/etc/motd</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1301" version="1" comment="The Login Banner configuration file: '/etc/issue'">
+               <unix-def:filepath>/etc/issue</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1302" version="1" comment="The Telnet Login Banner configuration file: '/etc/issue.net'">
+               <unix-def:filepath>/etc/issue.net</unix-def:filepath>
+          </unix-def:file_object>
+     </objects>
+     <states>
+           <unix-def:file_state id="oval:org.govready.ubuntu:ste:1300" version="1" comment="File permissions are 644 (rw- r-- r--).">
+               <unix-def:uread datatype="boolean">1</unix-def:uread>
+               <unix-def:uwrite datatype="boolean">1</unix-def:uwrite>
+               <unix-def:uexec datatype="boolean">0</unix-def:uexec>
+               <unix-def:gread datatype="boolean">1</unix-def:gread>
+               <unix-def:gwrite datatype="boolean">0</unix-def:gwrite>
+               <unix-def:gexec datatype="boolean">0</unix-def:gexec>
+               <unix-def:oread datatype="boolean">1</unix-def:oread>
+               <unix-def:owrite datatype="boolean">0</unix-def:owrite>
+               <unix-def:oexec datatype="boolean">0</unix-def:oexec>
+          </unix-def:file_state>
+     </states>
+</oval_definitions>

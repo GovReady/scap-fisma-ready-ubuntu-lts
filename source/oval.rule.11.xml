@@ -1,0 +1,178 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:1100" version="1">
+               <metadata>
+                    <title>Password Policies Have Been Improved</title>
+                    <description>Password policies should be strengthened by: installing libpam-cracklib; strengthen password requirements; configure password lockouts; and configure password expiration.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1100" />
+
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1110" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1111" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1118" />
+
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1120" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1121" />
+
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1130" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1131" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1132" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1133" />
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <linux-def:dpkginfo_test id="oval:org.govready.ubuntu:tst:1100" version="1" check_existence="at_least_one_exists" check="all" comment="The 'libpam-cracklib' package is installed.">
+               <linux-def:object object_ref="oval:org.govready.ubuntu:obj:1100"/>
+          </linux-def:dpkginfo_test>
+
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1110" version="1" check_existence="at_least_one_exists" check="at least one" comment="The PAM cracklib configuration file exists.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1110" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1111" version="1" check_existence="at_least_one_exists" check="all" comment="PAM cracklib implements the prescribed retry, length and complexity settings.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1111" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1111" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1112" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1113" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1114" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1115" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1116" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1117" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1118" version="1" check_existence="at_least_one_exists" check="all" comment="PAM cracklib implements the prescribed password rotation settings.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1118" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1118" />
+          </ind-def:textfilecontent54_test>
+
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1120" version="1" check_existence="at_least_one_exists" check="at least one" comment="The Login PAM configuration file exists.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1120" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1121" version="1" check_existence="at_least_one_exists" check="all" comment="The Login PAM implements prescribed lockouts.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1121" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1121" />
+          </ind-def:textfilecontent54_test>
+
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1130" version="1" check_existence="at_least_one_exists" check="at least one" comment="The Shadow Password Suite configuration configuration file exists.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1130" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1131" version="1" check_existence="at_least_one_exists" check="all" comment="The Shadow Password Suite's 'PASS_MAX_DAYS' configuration value is 90.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1131" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1131" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1132" version="1" check_existence="at_least_one_exists" check="all" comment="The Shadow Password Suite's 'PASS_MIN_DAYS' configuration value is 7.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1132" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1132" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:1133" version="1" check_existence="at_least_one_exists" check="all" comment="The Shadow Password Suite's 'PASS_WARN_AGE' configuration value is 10.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:1133" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:1133" />
+          </ind-def:textfilecontent54_test>
+     </tests>
+     <objects>
+          <linux-def:dpkginfo_object id="oval:org.govready.ubuntu:obj:1100" version="1" comment="The 'libpam-cracklib' package.">
+               <linux-def:name>libpam-cracklib</linux-def:name>
+          </linux-def:dpkginfo_object>
+
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1110" version="1" comment="The PAM cracklib configuration file: '/etc/pam.d/common-password'">
+               <unix-def:filepath>/etc/pam.d/common-password</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1111" version="1" comment="The PAM cracklib password retry, length and complexity settings.">
+               <ind-def:behaviors ignore_case="false" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/pam.d/common-password</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^password\s+requisite\s+pam_cracklib\.so(.*)\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1118" version="1" comment="The PAM cracklib password rotation setting.">
+               <ind-def:behaviors ignore_case="false" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/pam.d/common-password</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^password\s+\[success=1 default=ignore\]\s+pam_unix\.so(.*)\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1120" version="1" comment="The Login PAM configuration file: '/etc/pam.d/login'">
+               <unix-def:filepath>/etc/pam.d/login</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1121" version="1" comment="The Login PAM lockout settings.">
+               <ind-def:behaviors ignore_case="false" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/pam.d/login</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^auth\s+required\s+pam_tally2.so\s*(.*)\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1130" version="1" comment="The Shadow Password Suite configuration file: '/etc/login.defs'">
+               <unix-def:filepath>/etc/login.defs</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1131" version="1" comment="The Shadow Password Suite 'PASS_MAX_DAYS' configuration value.">
+               <ind-def:behaviors ignore_case="false" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/login.defs</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^PASS_MAX_DAYS\s+\s*(\w+)\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1132" version="1" comment="The Shadow Password Suite 'PASS_MIN_DAYS' configuration value.">
+               <ind-def:behaviors ignore_case="false" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/login.defs</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^PASS_MIN_DAYS\s+\s*(\w+)\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:1133" version="1" comment="The Shadow Password Suite 'PASS_WARN_AGE' configuration value.">
+               <ind-def:behaviors ignore_case="false" multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/login.defs</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^PASS_WARN_AGE\s+\s*(\w+)\s*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+
+     </objects>
+     <states>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1111" version="1" comment="Matches the value: 'retry=3'">
+               <ind-def:subexpression operation="pattern match">\sretry=3(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1112" version="1" comment="Matches the value: 'minlen=24'">
+               <ind-def:subexpression operation="pattern match">\sminlen=24(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1113" version="1" comment="Matches the value: 'dcredit=-2'">
+               <ind-def:subexpression operation="pattern match">\sdcredit=-2(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1114" version="1" comment="Matches the value: 'ucredit=-2'">
+               <ind-def:subexpression operation="pattern match">\sucredit=-2(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1115" version="1" comment="Matches the value: 'ocredit=-2'">
+               <ind-def:subexpression operation="pattern match">\socredit=-2(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1116" version="1" comment="Matches the value: 'lcredit=-2'">
+               <ind-def:subexpression operation="pattern match">\slcredit=-2(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1117" version="1" comment="Matches the value: 'lcredit=-2'">
+               <ind-def:subexpression operation="pattern match">\slcredit=-2(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1118" version="1" comment="Matches the value: 'remember=5'">
+               <ind-def:subexpression operation="pattern match">\sremember=5(\s|$)</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1121" version="1" comment="Matches the value: 'onerr=fail audit silent deny=5 unlock_time=900'">
+               <ind-def:subexpression operation="pattern match">\s*onerr=fail audit silent deny=5 unlock_time=900\s*</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1131" version="1" comment="Equals '90'">
+               <ind-def:subexpression operation="equals">90</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1132" version="1" comment="Equals '7'">
+               <ind-def:subexpression operation="equals">7</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:1133" version="1" comment="Equals '10'">
+               <ind-def:subexpression operation="equals">10</ind-def:subexpression>
+          </ind-def:textfilecontent54_state>
+     </states>
+</oval_definitions>

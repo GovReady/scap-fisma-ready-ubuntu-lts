@@ -1,0 +1,131 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:400" version="1">
+               <metadata>
+                    <title>/etc/modprobe.d/18fhardened.conf includes recommended hardening directives</title>
+                    <description>The OS attack surface can be reduced by configuring modprobe to block uncommon file systems and protocols.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:400" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:401" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:402" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:403" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:404" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:405" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:406" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:407" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:408" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:409" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:410" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:411" />
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:400" version="1" check_existence="at_least_one_exists" check="at least one" comment="The modprobe configuration file exists.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:400" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:401" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of cramfs file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:401" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:402" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of freevxfs file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:402" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:403" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of jffs2 file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:403" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:404" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of hfs file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:404" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:405" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of hfsplus file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:405" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:406" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of squashfs file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:406" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:407" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of udf file systems">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:407" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:408" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of the dccp protocol">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:408" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:409" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of the sctp protocol">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:409" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:410" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of the rds protocol">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:410" />
+          </ind-def:textfilecontent54_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:411" version="1" check_existence="at_least_one_exists" check="at least one" comment="Modprobe is configured to block installation of the tipc protocol">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:401" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:411" />
+          </ind-def:textfilecontent54_test>
+     </tests>
+     <objects>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:400" version="1" comment="The modprobe configuration file: '/etc/modprobe.d/18Fhardened.conf'">
+               <unix-def:filepath>/etc/modprobe.d/18Fhardened.conf</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:401" version="1" comment="The content of the modprobe configuration file: '/etc/modprobe.d/18Fhardened.conf'">
+               <ind-def:behaviors multiline="false" singleline="true" />               
+               <ind-def:filepath>/etc/modprobe.d/18Fhardened.conf</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^.*$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+     </objects>
+     <states>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:401" version="1" comment="Matches the line: 'install cramfs /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*cramfs\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:402" version="1" comment="Matches the line: 'install freevxfs /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*freevxfs\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:403" version="1" comment="Matches the line: 'install jffs2 /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*jffs2\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:404" version="1" comment="Matches the line: 'install hfs /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*hfs\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:405" version="1" comment="Matches the line: 'install hfsplus /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*hfsplus\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:406" version="1" comment="Matches the line: 'install squashfs /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*squashfs\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:407" version="1" comment="Matches the line: 'install udf /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*udf\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:408" version="1" comment="Matches the line: 'install dccp /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*dccp\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:409" version="1" comment="Matches the line: 'install sctp /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*sctp\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:410" version="1" comment="Matches the line: 'install rds /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*rds\s*bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:411" version="1" comment="Matches the line: 'install tipc /bin/true'">
+               <ind-def:text operation="pattern match">(?&lt;=\n|^)\s*install\s*tipc\s*/bin/true\s*(?=\n|$)</ind-def:text>
+          </ind-def:textfilecontent54_state>
+     </states>
+</oval_definitions>

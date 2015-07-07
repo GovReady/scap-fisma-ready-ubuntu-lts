@@ -1,0 +1,126 @@
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+	<generator>
+		<oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+		<oval-def:product_version>0.0.1</oval-def:product_version>
+		<oval-def:schema_version>5.10.1</oval-def:schema_version>
+		<oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+	</generator>
+	<definitions>
+		<definition class="compliance" id="oval:org.govready.ubuntu:def:300" version="1">
+			<metadata>
+				<title>Partition checks.</title>
+				<description>Insure that variable-data partitions do not co-reside on the system partition's device, and insure that the proper mount options are set.</description>
+			</metadata>
+			<criteria comment="Check for both partitioning across devices, and mount options.">
+				<criteria comment="Check /run/shm">
+					<criterion test_ref="oval:org.govready.ubuntu:tst:301"/>
+					<criterion test_ref="oval:org.govready.ubuntu:tst:310"/>
+				</criteria>
+				<criteria comment="Check /tmp.">
+					<criterion test_ref="oval:org.govready.ubuntu:tst:302"/>
+					<criterion test_ref="oval:org.govready.ubuntu:tst:320"/>
+				</criteria>
+				<criteria comment="Check the remaining mounts.">
+					<criterion test_ref="oval:org.govready.ubuntu:tst:300"/>
+					<criterion test_ref="oval:org.govready.ubuntu:tst:303"/>
+					<criterion test_ref="oval:org.govready.ubuntu:tst:304"/>
+					<criterion test_ref="oval:org.govready.ubuntu:tst:305"/>
+				</criteria>
+			</criteria>
+		</definition>
+	</definitions>
+	<tests>
+		<linux-def:partition_test id="oval:org.govready.ubuntu:tst:300" check="all" check_existence="all_exist" version="1" comment="The root partition exists.">
+			<linux-def:object object_ref="oval:org.govready.ubuntu:obj:300"/>
+		</linux-def:partition_test>
+		<linux-def:partition_test id="oval:org.govready.ubuntu:tst:301" check="all" check_existence="all_exist" version="1" comment="The partition /run/shm does not reside on the same device as the root partition.">
+			<linux-def:object object_ref="oval:org.govready.ubuntu:obj:301"/>
+			<linux-def:state state_ref="oval:org.govready.ubuntu:ste:300"/>
+		</linux-def:partition_test>
+		<linux-def:partition_test id="oval:org.govready.ubuntu:tst:302" check="all" check_existence="all_exist" version="1" comment="The partition /tmp does not reside on the same device as the root partition.">
+			<linux-def:object object_ref="oval:org.govready.ubuntu:obj:302"/>
+			<linux-def:state state_ref="oval:org.govready.ubuntu:ste:300"/>
+		</linux-def:partition_test>
+		<linux-def:partition_test id="oval:org.govready.ubuntu:tst:303" check="all" check_existence="all_exist" version="1" comment="The partition /home does not reside on the same device as the root partition.">
+			<linux-def:object object_ref="oval:org.govready.ubuntu:obj:303"/>
+			<linux-def:state state_ref="oval:org.govready.ubuntu:ste:300"/>
+		</linux-def:partition_test>
+		<linux-def:partition_test id="oval:org.govready.ubuntu:tst:304" check="all" check_existence="all_exist" version="1" comment="The partition /var does not reside on the same device as the root partition.">
+			<linux-def:object object_ref="oval:org.govready.ubuntu:obj:304"/>
+			<linux-def:state state_ref="oval:org.govready.ubuntu:ste:300"/>
+		</linux-def:partition_test>
+		<linux-def:partition_test id="oval:org.govready.ubuntu:tst:305" check="all" check_existence="all_exist" version="1" comment="The partition /var/log/audit does not reside on the same device as the root partition.">
+			<linux-def:object object_ref="oval:org.govready.ubuntu:obj:305"/>
+			<linux-def:state state_ref="oval:org.govready.ubuntu:ste:300"/>
+		</linux-def:partition_test>
+		<ind-def:variable_test id="oval:org.govready.ubuntu:tst:310" check="all" check_existence="at_least_one_exists" version="1" comment="Check the mount options for the /run/shm partition.">
+			<ind-def:object object_ref="oval:org.govready.ubuntu:obj:310"/>
+			<ind-def:state state_ref="oval:org.govready.ubuntu:ste:310"/>
+		</ind-def:variable_test>
+		<ind-def:variable_test id="oval:org.govready.ubuntu:tst:320" check="all" check_existence="at_least_one_exists" version="1" comment="Check the mount options for the /tmp partition.">
+			<ind-def:object object_ref="oval:org.govready.ubuntu:obj:320"/>
+			<ind-def:state state_ref="oval:org.govready.ubuntu:ste:320"/>
+		</ind-def:variable_test>
+	</tests>
+	<objects>
+		<linux-def:partition_object id="oval:org.govready.ubuntu:obj:300" version="1" comment="The root partition.">
+			<linux-def:mount_point>/</linux-def:mount_point>
+		</linux-def:partition_object>
+		<linux-def:partition_object id="oval:org.govready.ubuntu:obj:301" version="1" comment="The /run/shm partition.">
+			<linux-def:mount_point>/run/shm</linux-def:mount_point>
+		</linux-def:partition_object>
+		<linux-def:partition_object id="oval:org.govready.ubuntu:obj:302" version="1" comment="The /tmp partition.">
+			<linux-def:mount_point>/tmp</linux-def:mount_point>
+		</linux-def:partition_object>
+		<linux-def:partition_object id="oval:org.govready.ubuntu:obj:303" version="1" comment="The /home partition.">
+			<linux-def:mount_point>/home</linux-def:mount_point>
+		</linux-def:partition_object>
+		<linux-def:partition_object id="oval:org.govready.ubuntu:obj:304" version="1" comment="The /var partition.">
+			<linux-def:mount_point>/var</linux-def:mount_point>
+		</linux-def:partition_object>
+		<linux-def:partition_object id="oval:org.govready.ubuntu:obj:305" version="1" comment="The /var/log/audit partition.">
+			<linux-def:mount_point>/var/log/audit</linux-def:mount_point>
+		</linux-def:partition_object>
+		<ind-def:variable_object id="oval:org.govready.ubuntu:obj:310" version="1" comment="Mount options required for the /run/shm partition.">
+			<ind-def:var_ref>oval:org.govready.ubuntu:var:310</ind-def:var_ref>
+		</ind-def:variable_object>
+		<ind-def:variable_object id="oval:org.govready.ubuntu:obj:320" version="1" comment="Mount options required for the /tmp partition.">
+			<ind-def:var_ref>oval:org.govready.ubuntu:var:320</ind-def:var_ref>
+		</ind-def:variable_object>
+	</objects>
+	<states>
+		<linux-def:partition_state id="oval:org.govready.ubuntu:ste:300" version="1" comment="The partition does not reside on the root partition's device.">
+			<linux-def:device operation="not equal" var_ref="oval:org.govready.ubuntu:var:300"></linux-def:device>
+		</linux-def:partition_state>
+		<ind-def:variable_state id="oval:org.govready.ubuntu:ste:310" version="1" comment="Check that each mount option required for the /run/shm partition is found once among each of the partition's mount options.">
+			<ind-def:value entity_check="all" operation="equals" var_ref="oval:org.govready.ubuntu:var:301" var_check="only one"/>
+		</ind-def:variable_state>
+		<ind-def:variable_state id="oval:org.govready.ubuntu:ste:320" version="1" comment="Check that each mount option required for the /tmp partition is found once among each of the partition's mount options.">
+			<ind-def:value entity_check="all" operation="equals" var_ref="oval:org.govready.ubuntu:var:302" var_check="only one"/>
+		</ind-def:variable_state>
+	</states>
+	<variables>
+		<local_variable datatype="string" id="oval:org.govready.ubuntu:var:300" version="1" comment="The device on which the system partition resides.">
+			<object_component object_ref="oval:org.govready.ubuntu:obj:300" item_field="device"/>
+		</local_variable>
+		<local_variable datatype="string" id="oval:org.govready.ubuntu:var:301" version="1" comment="Mount options for the /run/shm partition.">
+			<object_component object_ref="oval:org.govready.ubuntu:obj:301" item_field="mount_options"/>
+		</local_variable>
+		<local_variable datatype="string" id="oval:org.govready.ubuntu:var:302" version="1" comment="Mount options for the /tmp partition.">
+			<object_component object_ref="oval:org.govready.ubuntu:obj:302" item_field="mount_options"/>
+		</local_variable>
+		<constant_variable datatype="string" id="oval:org.govready.ubuntu:var:310" version="1" comment="Required mount options for the /run/shm partition.">
+			<value>defaults</value>
+			<value>nodev</value>
+			<value>noexec</value>
+			<value>nosuid</value>
+		</constant_variable>
+		<constant_variable datatype="string" id="oval:org.govready.ubuntu:var:320" version="1" comment="Required mount options for the /tmp partition.">
+			<value>defaults</value>
+			<value>nodev</value>
+			<value>noexec</value>
+			<value>nosuid</value>
+			<value>rw</value>
+		</constant_variable>
+	</variables>
+</oval_definitions>

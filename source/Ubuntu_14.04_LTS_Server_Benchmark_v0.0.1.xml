@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xccdf:Benchmark 
+   id="xccdf_org.govready.ubuntu_benchmark_Ubuntu_14_04_LTS_Server" 
+   style="SCAP_1.2" xml:lang="en-US" 
+   xmlns="http://checklists.nist.gov/xccdf/1.1" 
+   xmlns:xccdf="http://checklists.nist.gov/xccdf/1.1" 
+   xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 http://scap.nist.gov/schema/xccdf/1.2/xccdf_1.2.xsd http://cpe.mitre.org/dictionary/2.0 http://scap.nist.gov/schema/cpe/2.3/cpe-dictionary_2.3.xsd">
+
+   <!-- Benchmark Metadata -->
+
+   <xccdf:status date="2015-01-01">incomplete</xccdf:status>
+   <xccdf:title xml:lang="en">GovReady.org Ubuntu 14.04 LTS Server Benchmark</xccdf:title>
+   <xccdf:description xml:lang="en">
+      <xhtml:p>
+         This project provides prescriptive guidance for creating hardened, 
+         FISMA-Ready configurations for Ubuntu 14.04 LTS Server.
+      </xhtml:p>
+   </xccdf:description>
+   <xccdf:notice id="terms-of-use" xml:lang="en">TBD</xccdf:notice>
+   <!-- TBD <xccdf:reference href="https://github.com/fisma-ready/ubuntu-lts">
+      <dc:publisher></dc:publisher>
+      <dc:identifier></dc:identifier>
+   </xccdf:reference> -->
+   <xccdf:platform idref="cpe:/o:ubuntu-trusty:linux"/>	
+   <xccdf:version>0.0.1</xccdf:version>
+
+   <!-- Profiles -->
+
+   <xccdf:Profile id="xccdf_org.govready.ubuntu_profile_default">
+      <xccdf:title xml:lang="en">Select All Generally Applicable Rules</xccdf:title>
+      <xccdf:description xml:lang="en">
+         <xhtml:p>This rule selects all rules contained in this Benchmark that are generally applicable.</xhtml:p>
+      </xccdf:description>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_1" selected="false"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_2" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_3" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_4" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_5" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_6" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_7" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_8" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_9" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_10" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_11" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_12" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_13" selected="true"/>
+      <xccdf:refine-value idref="xccdf_org.govready_value_debian_package_repository_URI_regex_var" selector="default"/>
+   </xccdf:Profile>
+   <xccdf:Profile id="xccdf_org.govready.ubuntu_profile_vagrant">
+      <xccdf:title xml:lang="en">Select Rules for Vagrant Use Case</xccdf:title>
+      <xccdf:description xml:lang="en">
+         <xhtml:p>This rule selects all rules that are applicable to the Vagrant Use Case.</xhtml:p>
+      </xccdf:description>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_1" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_2" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_3" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_4" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_5" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_6" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_7" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_8" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_9" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_10" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_11" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_12" selected="true"/>
+      <xccdf:select idref="xccdf_org.govready.ubuntu_rule_13" selected="true"/>
+      <xccdf:refine-value idref="xccdf_org.govready_value_virtualbox_guest_additions_version_var" selector="default"/>
+      <xccdf:refine-value idref="xccdf_org.govready_value_debian_package_repository_URI_regex_var" selector="default"/>
+   </xccdf:Profile>
+
+   <!-- Groups and Rules -->
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_vagrant">
+      <xccdf:title xml:lang="en">Vagrant Setup</xccdf:title>
+      <!--<xccdf:description xml:lang="en"></xccdf:description>-->
+      <xccdf:Value id="xccdf_org.govready_value_virtualbox_guest_additions_version_var" operator="equals" type="string">
+        <xccdf:title>Debian Binary Package Repository URI</xccdf:title>
+        <xccdf:description>The value defines the URI for the Debian package repository which APT is configured to use.</xccdf:description>
+        <xccdf:value selector="default">4.3.20</xccdf:value>
+      </xccdf:Value>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_1" selected="false" weight="10.0">
+         <xccdf:title>Ensure Vagrant Guest Additions are Up-to-date</xccdf:title>
+         <xccdf:description>
+            <xhtml:p>If you are doing this work via Vagrant, before you do your first vagrant up, you might have a version mistmatch between the Guest Additions installed on the box vs your install of VirtualBox.</xhtml:p>
+         </xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:p>Go to the same folder as the Vagrantfile you&apos;re about to use:</xhtml:p>
+            <xhtml:code>
+               vagrant plugin install vagrant-vbguest
+               vagrant up
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-export export-name="oval:org.govready.ubuntu:var:100" value-id="xccdf_org.govready_value_virtualbox_guest_additions_version_var"/>
+            <xccdf:check-content-ref href="oval.rule.01.xml" name="oval:org.govready.ubuntu:def:100"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_ubuntu_patching">
+      <xccdf:title xml:lang="en">Ubuntu Patching</xccdf:title>
+      <!--<xccdf:description xml:lang="en"></xccdf:description>-->
+      <xccdf:Value id="xccdf_org.govready_value_debian_package_repository_URI_regex_var" operator="equals" type="string">
+        <xccdf:title>Debian Binary Package Repository URI</xccdf:title>
+        <xccdf:description>A regular expression to match against all debian repository URIs.</xccdf:description>
+        <xccdf:value selector="default">ubuntu\.com</xccdf:value>
+      </xccdf:Value>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_2" selected="false" weight="10.0">
+         <xccdf:title>Ensure that Ubuntu is Up-to-date</xccdf:title>
+         <xccdf:description>Ubuntu should be completely patched and up-to-date.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               apt-get update
+               apt-get upgrade
+               Y
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-export export-name="oval:org.govready.ubuntu:var:200" value-id="xccdf_org.govready_value_debian_package_repository_URI_regex_var"/>
+            <xccdf:check-content-ref href="oval.rule.02.xml" name="oval:org.govready.ubuntu:def:200"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_partitions_management">
+      <xccdf:title xml:lang="en">Partitions Management</xccdf:title>
+      <!--<xccdf:description xml:lang="en"></xccdf:description>-->
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_3" selected="false" weight="10.0">
+         <xccdf:title>Ensure Partitions are Set Up Securely</xccdf:title>
+         <xccdf:description>The /run/shm, /tmp, /home, /var and /var/log/audit partitions should not reside on the same device as the system partition.</xccdf:description>
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:p>
+               See the Disk Partioning Guide in <xhtml:a href="https://github.com/GovReady/ubuntu-lts/blob/master/hardening.md">Hardening Ubuntu 14.04 to 18F standards</xhtml:a>.
+            </xhtml:p>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.03.xml" name="oval:org.govready.ubuntu:def:300"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_4" selected="false" weight="10.0">
+         <xccdf:title>Reduce Attack Surface</xccdf:title>
+         <xccdf:description>Every installed application creates an potential attack surface. A hardened OS reduces this surface to the absolute minimum for system functionality.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:p>One of the places we can reduce the attack surface is in a configuration file stored in /etc/modprobe.d</xhtml:p>
+            <xhtml:code>
+               cd /etc/modprobe.d
+               touch 18Fhardened.conf
+               vi 18Fhardened.conf
+            </xhtml:code>
+            <xhtml:p>Add:</xhtml:p>
+            <xhtml:code>
+               # Applications
+
+               install cramfs /bin/true
+               install freevxfs /bin/true
+               install jffs2 /bin/true
+               install hfs /bin/true
+               install hfsplus /bin/true
+               install squashfs /bin/true
+               install udf /bin/true
+
+               # Protocols
+
+               install dccp /bin/true
+               install sctp /bin/true
+               install rds /bin/true
+               install tipc /bin/true
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.04.xml" name="oval:org.govready.ubuntu:def:400"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_boot_settings">
+      <xccdf:title xml:lang="en">Boot Settings</xccdf:title>
+      <!--<xccdf:description xml:lang="en"></xccdf:description>-->
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_5" selected="false" weight="10.0">
+         <xccdf:title>Boot Loaders are Protected</xccdf:title>
+         <xccdf:description>Boot loaders need to be protected. Anyone who is not root doesn't need to write to this file.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               chmod og-wx /boot/grub/grub.cfg
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.05.xml" name="oval:org.govready.ubuntu:def:500"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_6" selected="false" weight="10.0">
+         <xccdf:title>grub Has a Bootloader Password</xccdf:title>
+         <xccdf:description>We don't want anyone messing with booting, so let's create a password.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               grub-mkpasswd-pbkdf2
+               # keep password and encrypted version somewhere safe
+               vim /etc/grub.d/40_custom
+            </xhtml:code>
+            <xhtml:p>Add:</xhtml:p>
+            <xhtml:code>
+               set superusers="INSERT USER HERE"
+               password_pbkdf2 INSERT USER HERE &lt;encrypted-password&gt;
+               EOF
+            </xhtml:code>
+            <xhtml:p>Save the file and then:</xhtml:p>
+            <xhtml:code>
+               update-grub
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.06.xml" name="oval:org.govready.ubuntu:def:600"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_redirect_protections">
+      <xccdf:title xml:lang="en">Redirect Protections</xccdf:title>
+      <!--<xccdf:description xml:lang="en"></xccdf:description>-->
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_7" selected="false" weight="10.0">
+         <xccdf:title>Harden ICMP Redirect Handling</xccdf:title>
+         <xccdf:description>Unless this OS is powering a router, we can harden how it handles ICMP redirects.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               vim /etc/sysctl.conf
+            </xhtml:code>
+            <xhtml:p>You'll find all the controls already here, but commented out. You'll want to remove the # for the following, or add these lines if they're not there:</xhtml:p>
+            <xhtml:code>
+               # Spoof protection
+               net.ipv4.conf.default.rp_filter=1
+               net.ipv4.conf.all.rp_filter=1
+
+               # Do not accept ICMP redirects (prevent MITM attacks)
+               net.ipv4.conf.all.accept_redirects=0
+               net.ipv6.conf.all.accept_redirects=0
+               net.ipv4.conf.default.accept_redirects=0
+               net.ipv6.conf.default.accept_redirects=0
+               net.ipv4.conf.all.secure_redirects=0  
+               net.ipv4.conf.default.secure_redirects=0  
+
+               # Do not send ICMP redirects (we are not a router)
+               net.ipv4.conf.all.send_redirects=0
+               net.ipv4.conf.default.send_redirects=0
+
+               # Do not accept IP source route packets (we are not a router)
+               net.ipv4.conf.all.accept_source_route=0
+               net.ipv6.conf.all.accept_source_route=0
+               net.ipv4.conf.default.accept_source_route=0
+               net.ipv6.conf.default.accept_source_route=0
+
+               # Log packets from Mars
+               net.ipv4.conf.all.log_martians=1
+               net.ipv4.conf.default.log_martians=1
+            </xhtml:code>
+            <xhtml:p>Update your kernel parameters to match - for each of these lines enter:</xhtml:p>
+            <xhtml:code>
+               /sbin/sysctl -w [INSERT LINE HERE W/ VALUE]
+            </xhtml:code>
+            <xhtml:p>Then, flush!</xhtml:p>
+            <xhtml:code>
+               /sbin/sysctl -w net.ipv4.route.flush=1
+               /sbin/sysctl -w net.ipv6.route.flush=1
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.07.xml" name="oval:org.govready.ubuntu:def:700"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_auditing">
+      <xccdf:title>Audit Strategy</xccdf:title>
+      <xccdf:description>Audit strategy is highly environment and application specific. In the near future, we will post some overall best practices here, likey including a more standardized configuration for /etc/audit/auditd.conf</xccdf:description>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_8" selected="false" weight="10.0">
+         <xccdf:title>Auditing is Enabled During Booting</xccdf:title>
+         <xccdf:description>auditd is great, but it can't audit processes that run before it starts - or can it?</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               vi /etc/default/grub
+            </xhtml:code>
+            <xhtml:p>Then modify the following line to read:</xhtml:p>
+            <xhtml:code>
+               GRUB_CMDLINE_LINUX="audit=1"
+            </xhtml:code>
+            <xhtml:p>And run:</xhtml:p>
+            <xhtml:code>
+               update-grub
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.08.xml" name="oval:org.govready.ubuntu:def:800"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_9" selected="false" weight="10.0">
+         <xccdf:title>Audit Rules are in Place</xccdf:title>
+         <xccdf:description>Rules for auditd have been added for: date/time; user/passwords; networking; selinux; login &amp; logout; permission modifications; unauthorized access; filesytem mounts; file deletion; changes to sysadmin scope; and kernel loading.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               vi /etc/audit/audit.rules
+            </xhtml:code>
+            <xhtml:p>Add:</xhtml:p>
+            <xhtml:code>
+               # Date/time:
+               -a always,exit -F arch=b64 -S adjtimex -S settimeofday -k time-change
+               -a always,exit -F arch=b32 -S adjtimex -S settimeofday -S stime -k time-change
+               -a always,exit -F arch=b64 -S clock_settime -k time-change
+               -a always,exit -F arch=b32 -S clock_settime -k time-change
+               -w /etc/localtime -p wa -k time-change
+               
+               # User/passwords:
+               -w /etc/group -p wa -k identity
+               -w /etc/passwd -p wa -k identity
+               -w /etc/gshadow -p wa -k identity
+               -w /etc/shadow -p wa -k identity
+               -w /etc/security/opasswd -p wa -k identity
+               
+               # Network stuff:
+               -a exit,always -F arch=b64 -S sethostname -S setdomainname -k system-locale
+               -a exit,always -F arch=b32 -S sethostname -S setdomainname -k system-locale
+               -w /etc/issue -p wa -k system-locale
+               -w /etc/issue.net -p wa -k system-locale
+               -w /etc/hosts -p wa -k system-locale
+               -w /etc/network -p wa -k system-locale
+               
+               # SELinux (likely you're using AppArmor instead, but just in case you pull SELinux packages from Debian, best to have this already listed)
+               -w /etc/selinux/ -p wa -k MAC-policy
+               
+               # Login and logout:
+               -w /var/log/faillog -p wa -k logins
+               -w /var/log/lastlog -p wa -k logins
+               -w /var/log/tallylog -p wa -k logins
+               
+               # Permission modifications:
+               -a always,exit -F arch=b64 -S chmod -S fchmod -S fchmodat -F auid>=500 -F auid!=4294967295 -k perm_mod
+               -a always,exit -F arch=b32 -S chmod -S fchmod -S fchmodat -F auid>=500 -F auid!=4294967295 -k perm_mod
+               -a always,exit -F arch=b64 -S chown -S fchown -S fchownat -S lchown -F auid>=500 -F auid!=4294967295 -k perm_mod
+               -a always,exit -F arch=b32 -S chown -S fchown -S fchownat -S lchown -F auid>=500 -F auid!=4294967295 -k perm_mod
+               -a always,exit -F arch=b64 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod
+               -a always,exit -F arch=b32 -S setxattr -S lsetxattr -S fsetxattr -S removexattr -S lremovexattr -S fremovexattr -F auid>=500 -F auid!=4294967295 -k perm_mod
+               
+               # Unauthorized access:
+               -a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=500 -F auid!=4294967295 -k access
+               -a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EACCES -F auid>=500 -F auid!=4294967295 -k access
+               -a always,exit -F arch=b64 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=500 -F auid!=4294967295 -k access
+               -a always,exit -F arch=b32 -S creat -S open -S openat -S truncate -S ftruncate -F exit=-EPERM -F auid>=500 -F auid!=4294967295 -k access
+               
+               # Collect filesystem mounts:
+               -a always,exit -F arch=b32 -S mount -F auid>=500 -F auid!=4294967295 -k mounts
+               -a always,exit -F arch=b64 -S mount -F auid>=500 -F auid!=4294967295 -k mounts
+               
+               # File deletion:
+               -a always,exit -F arch=b64 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+               -a always,exit -F arch=b32 -S unlink -S unlinkat -S rename -S renameat -F auid>=500 -F auid!=4294967295 -k delete
+               
+               # Change to sysadmin scope:
+               -w /etc/sudoers -p wa -k scope
+               
+               # Kernel loading:
+               -w /sbin/insmod -p x -k modules
+               -w /sbin/rmmod -p x -k modules
+               -w /sbin/modprobe -p x -k modules
+               -a always,exit arch=b64 -S init_module -S delete_module -k modules
+               
+               # Make audit config immutable
+               -e 2
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.09.xml" name="oval:org.govready.ubuntu:def:900"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_system_access">
+      <xccdf:title>System Access, Authentication and Authorization</xccdf:title>
+      <!-- <xccdf:description></xccdf:description> -->
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_10" selected="false" weight="10.0">
+         <xccdf:title>Ensure Only Root Can Modify System Cron Jobs</xccdf:title>
+         <xccdf:description>Only root should modify what system jobs cron runs.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               chown root:root /etc/crontab
+               chmod og-rwx /etc/crontab
+
+               chown root:root /etc/cron.hourly
+               chmod og-rwx /etc/cron.hourly
+
+               chown root:root /etc/cron.daily
+               chmod og-rwx /etc/cron.daily
+
+               chown root:root /etc/cron.weekly
+               chmod og-rwx /etc/cron.weekly
+
+               chown root:root /etc/cron.monthly
+               chmod og-rwx /etc/cron.monthly
+
+               chown root:root /etc/cron.d
+               chmod og-rwx /etc/cron.d
+
+               /bin/rm /etc/at.deny
+               touch /etc/cron.allow
+               touch /etc/at.allow
+
+               chmod og-rwx /etc/cron.allow
+               chmod og-rwx /etc/at.allow
+               chown root:root /etc/cron.allow
+               chown root:root /etc/at.allow
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.10.xml" name="oval:org.govready.ubuntu:def:1000"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_password_policy">
+      <xccdf:title>Password Policy</xccdf:title>
+      <xccdf:description>Script-kiddies and crackers should find no safe harbor here. Let's prevent common cracking by improving our password polcies.</xccdf:description>
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_11" selected="false" weight="10.0">
+         <xccdf:title>Password Policies Have Been Improved</xccdf:title>
+         <xccdf:description>Password policies should be strengthened by: installing libpam-cracklib; strengthen password requirements; configure password lockouts; and configure password expiration.</xccdf:description>
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               apt-get install libpam-cracklib
+            </xhtml:code>
+            <xhtml:p>Edit /etc/pam.d/common-password:</xhtml:p>
+            <xhtml:code>
+               # find "password     requisite     pam_cracklib.so retry=3 minlen=8 difok=3"
+               # change to:
+               password     requisite     pam_cracklib.so retry=3 minlen=24 dcredit=-2 ucredit=-2 ocredit=-2 lcredit=-2
+               # change next line to:
+               password     [success=1 default=ignore]     pam_unix.so obscure use_authtok try_first_pass sha512 remember=5
+            </xhtml:code>
+            <xhtml:p>Lockouts /etc/pam.d/login:</xhtml:p>
+            <xhtml:code>
+               auth required pam_tally2.so onerr=fail audit silent deny=5 unlock_time=900
+            </xhtml:code>
+            <xhtml:p>Password expiration using /etc/login.defs</xhtml:p>
+            <xhtml:code>
+               PASS_MAX_DAYS 90
+               PASS_MIN_DAYS 7
+               PASS_WARN_AGE 10
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.11.xml" name="oval:org.govready.ubuntu:def:1100"/>
+         </xccdf:check>
+      </xccdf:Rule>
+   
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_ssh_settings">
+      <xccdf:title>SSH Settings</xccdf:title>
+      <!-- <xccdf:description></xccdf:description> -->
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_12" selected="false" weight="10.0">
+         <xccdf:title>SSH Configuration has been Secured</xccdf:title>
+         <xccdf:description>Modify sshd_config settings and permissions to be more secure.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               Modify /etc/ssh/sshd_config to include:
+            </xhtml:code>
+            <xhtml:code>
+               X11Forwarding no
+               MaxAuthTries 4
+               PermitRootLogin no
+               PermitEmptyPasswords no
+               PermitUserEnvironment no
+               Ciphers aes128-ctr,aes192-ctr,aes256-ctr
+               ClientAliveInterval 600
+               ClientAliveCountMax 0
+            </xhtml:code>
+            <xhtml:code>
+               Lock the file permissions down:
+            </xhtml:code>
+            <xhtml:code>
+               chown root:root /etc/ssh/sshd_config
+               chmod 600 /etc/ssh/sshd_config
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.12.xml" name="oval:org.govready.ubuntu:def:1200"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+   <xccdf:Group id="xccdf_org.govready.ubuntu_group_banners">
+      <xccdf:title>Banners</xccdf:title>
+      <!-- <xccdf:description></xccdf:description> -->
+
+      <xccdf:Rule id="xccdf_org.govready.ubuntu_rule_13" selected="false" weight="10.0">
+         <xccdf:title>Banner is Added &amp; Has Correct Permission</xccdf:title>
+         <xccdf:description>There should be a banner and it should have the correct permissions.</xccdf:description>
+         <!-- <xccdf:rationale xml:lang="en"></xccdf:rationale> -->
+         <xccdf:fixtext xml:lang="en">
+            <xhtml:code>
+               chmod 644 /etc/motd
+               chmod 644 /etc/issue
+               chmod 644 /etc/issue.net
+            </xhtml:code>
+         </xccdf:fixtext>
+         <xccdf:check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+            <xccdf:check-content-ref href="oval.rule.13.xml" name="oval:org.govready.ubuntu:def:1300"/>
+         </xccdf:check>
+      </xccdf:Rule>
+
+   </xccdf:Group>
+
+</xccdf:Benchmark>

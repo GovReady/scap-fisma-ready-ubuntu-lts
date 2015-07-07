@@ -1,0 +1,104 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:1000" version="1">
+               <metadata>
+                    <title>Ensure Only Root Can Modify System Cron Jobs</title>
+                    <description>Only root should modify what system jobs cron runs.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1000"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1001"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1002"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1003"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1004"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1005"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1006"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:1007"/>
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1000" check="all" check_existence="all_exist" version="1" comment="'/etc/crontab' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1000"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1001" check="all" check_existence="all_exist" version="1" comment="'/etc/cron.hourly' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1001"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1002" check="all" check_existence="all_exist" version="1" comment="'/etc/cron.daily' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1002"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1003" check="all" check_existence="all_exist" version="1" comment="'/etc/cron.weekly' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1003"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1004" check="all" check_existence="all_exist" version="1" comment="'/etc/cron.monthly' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1004"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1005" check="all" check_existence="all_exist" version="1" comment="'/etc/cron.d' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1005"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1006" check="all" check_existence="all_exist" version="1" comment="'/etc/cron.allow' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1006"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:1007" check="all" check_existence="all_exist" version="1" comment="'/etc/at.allow' should be owned by root:root and non-owners should have no access permissions.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:1007"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:1000"/>
+          </unix-def:file_test>
+     </tests>
+     <objects>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1000" version="1" comment="/etc/crontab">
+               <unix-def:filepath>/etc/crontab</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1001" version="1" comment="/etc/cron.hourly">
+               <unix-def:filepath>/etc/cron.hourly</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1002" version="1" comment="/etc/cron.daily">
+               <unix-def:filepath>/etc/cron.daily</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1003" version="1" comment="/etc/cron.weekly">
+               <unix-def:filepath>/etc/cron.weekly</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1004" version="1" comment="/etc/cron.monthly">
+               <unix-def:filepath>/etc/cron.monthly</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1005" version="1" comment="/etc/cron.d">
+               <unix-def:filepath>/etc/cron.d</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1006" version="1" comment="/etc/cron.allow">
+               <unix-def:filepath>/etc/cron.allow</unix-def:filepath>
+          </unix-def:file_object>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:1007" version="1" comment="/etc/at.allow">
+               <unix-def:filepath>/etc/at.allow</unix-def:filepath>
+          </unix-def:file_object>
+     </objects>
+     <states>
+          <unix-def:file_state id="oval:org.govready.ubuntu:ste:1000" version="1" comment="File is owned by root:root; group and other read/write/exec mode bits are unset.">
+               <unix-def:group_id datatype="int">0</unix-def:group_id>
+               <unix-def:user_id datatype="int">0</unix-def:user_id>
+               <unix-def:gread datatype="boolean">0</unix-def:gread>
+               <unix-def:gwrite datatype="boolean">0</unix-def:gwrite>
+               <unix-def:gexec datatype="boolean">0</unix-def:gexec>
+               <unix-def:oread datatype="boolean">0</unix-def:oread>
+               <unix-def:owrite datatype="boolean">0</unix-def:owrite>
+               <unix-def:oexec datatype="boolean">0</unix-def:oexec>
+          </unix-def:file_state>
+     </states>
+</oval_definitions>

@@ -1,0 +1,209 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:700" version="1">
+               <metadata>
+                    <title></title>
+                    <description></description>
+               </metadata>
+               <criteria>
+                    <extend_definition definition_ref="oval:org.govready.ubuntu:def:710"/>
+                    <extend_definition definition_ref="oval:org.govready.ubuntu:def:720"/>
+                    <extend_definition definition_ref="oval:org.govready.ubuntu:def:730"/>
+                    <extend_definition definition_ref="oval:org.govready.ubuntu:def:740"/>
+                    <extend_definition definition_ref="oval:org.govready.ubuntu:def:750"/>
+               </criteria>
+          </definition>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:710" version="1">
+               <metadata>
+                    <title>Spoof protection</title>
+                    <description></description>
+               </metadata>
+               <criteria>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:710"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:711"/>
+               </criteria>
+          </definition>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:720" version="1">
+               <metadata>
+                    <title>Do not accept ICMP redirects</title>
+                    <description>This configuration prevents 'man in the middle' (MITM) attacks.</description>
+               </metadata>
+               <criteria>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:720"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:721"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:722"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:723"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:724"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:725"/>
+               </criteria>
+          </definition>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:730" version="1">
+               <metadata>
+                    <title>Do not send ICMP redirects</title>
+                    <description></description>
+               </metadata>
+               <criteria>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:730"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:731"/>
+               </criteria>
+          </definition>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:740" version="1">
+               <metadata>
+                    <title>Do not accept IP source route packets</title>
+                    <description></description>
+               </metadata>
+               <criteria>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:740"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:741"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:742"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:743"/>
+               </criteria>
+          </definition>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:750" version="1">
+               <metadata>
+                    <title>Log 'packets from Mars'</title>
+                    <description>This logs spoofed as well as "source routed" and "redirect" packets.</description>
+               </metadata>
+               <criteria>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:750"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:751"/>
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:710" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 default filtering is set to true.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:710"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:701"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:711" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 all filtering is set to true.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:711"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:701"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:720" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 default accept_redirects is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:720"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:721" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 all accept_redirects is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:721"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:722" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 default secure_redirects is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:722"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:723" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 all secure_redirects is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:723"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:724" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv6 default accept_redirects is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:724"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:725" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv6 all accept_redirects is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:725"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:730" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 default send_redirects is set to true.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:730"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:731" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 all send_redirects is set to true.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:731"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:740" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 default accept_source_route is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:740"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:741" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 all accept_source_route is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:741"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:742" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv6 default accept_source_route is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:742"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:743" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv6 all accept_source_route is set to false.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:743"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:700"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:750" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 default log_martians is set to true.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:750"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:701"/>
+          </unix-def:sysctl_test>
+          <unix-def:sysctl_test id="oval:org.govready.ubuntu:tst:751" check="all" check_existence="at_least_one_exists" version="1" comment="Check that the kernel parameter controlling IPv4 all log_martians is set to true.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:751"/>
+               <unix-def:state state_ref="oval:org.govready.ubuntu:ste:701"/>
+          </unix-def:sysctl_test>
+     </tests>
+     <objects>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:710" version="1" comment="The IPv4 RP default filtering kernel property">
+		<unix-def:name>net.ipv4.conf.default.rp_filter</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:711" version="1" comment="The IPv4 RP all filtering kernel property">
+		<unix-def:name>net.ipv4.conf.all.rp_filter</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:720" version="1" comment="The IPv4 default accept_redirects kernel property">
+		<unix-def:name>net.ipv4.conf.default.accept_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:721" version="1" comment="The IPv4 all accept_redirects kernel property">
+		<unix-def:name>net.ipv4.conf.all.accept_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:722" version="1" comment="The IPv4 default secure_redirects kernel property">
+		<unix-def:name>net.ipv4.conf.default.secure_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:723" version="1" comment="The IPv4 all secure_redirects kernel property">
+		<unix-def:name>net.ipv4.conf.all.secure_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:724" version="1" comment="The IPv6 default accept_redirects kernel property">
+		<unix-def:name>net.ipv6.conf.default.accept_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:725" version="1" comment="The IPv6 all accept_redirects kernel property">
+		<unix-def:name>net.ipv6.conf.all.accept_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:730" version="1" comment="The IPv4 default send_redirects kernel property">
+		<unix-def:name>net.ipv4.conf.default.send_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:731" version="1" comment="The IPv4 all send_redirects kernel property">
+		<unix-def:name>net.ipv4.conf.all.send_redirects</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:740" version="1" comment="The IPv4 default accept_source_route kernel property">
+		<unix-def:name>net.ipv4.conf.default.accept_source_route</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:741" version="1" comment="The IPv4 all accept_source_route kernel property">
+		<unix-def:name>net.ipv4.conf.all.accept_source_route</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:742" version="1" comment="The IPv6 default accept_source_route kernel property">
+		<unix-def:name>net.ipv6.conf.default.accept_source_route</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:743" version="1" comment="The IPv6 all accept_source_route kernel property">
+		<unix-def:name>net.ipv6.conf.all.accept_source_route</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:750" version="1" comment="The IPv4 default log_martians kernel property">
+		<unix-def:name>net.ipv4.conf.default.log_martians</unix-def:name>
+          </unix-def:sysctl_object>
+          <unix-def:sysctl_object id="oval:org.govready.ubuntu:obj:751" version="1" comment="The IPv4 all log_martians kernel property">
+		<unix-def:name>net.ipv4.conf.all.log_martians</unix-def:name>
+          </unix-def:sysctl_object>
+     </objects>
+     <states>
+          <unix-def:sysctl_state id="oval:org.govready.ubuntu:ste:700" version="1" comment="Assert that a boolean kernel configuration parameter is false.">
+		<unix-def:value datatype="boolean">0</unix-def:value>
+          </unix-def:sysctl_state>
+          <unix-def:sysctl_state id="oval:org.govready.ubuntu:ste:701" version="1" comment="Assert that a boolean kernel configuration parameter is true.">
+		<unix-def:value datatype="boolean">1</unix-def:value>
+          </unix-def:sysctl_state>
+     </states>
+</oval_definitions>

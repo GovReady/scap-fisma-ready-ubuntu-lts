@@ -1,0 +1,55 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:x-linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#x-linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:200" version="1">
+               <metadata>
+                    <title>Insure that Ubuntu is completely patched and updated</title>
+                    <description></description>
+               </metadata>
+               <criteria comment="Verify that apt is properly configured, and that there are no updates.">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:200"/>
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:210"/>
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:200" check="all" check_existence="at_least_one_exists" version="1" comment="Verify that apt is configured to use the desired repository.">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:200"/>
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:200"/>
+          </ind-def:textfilecontent54_test>
+          <x-linux-def:apt_test id="oval:org.govready.ubuntu:tst:210" check="at least one" check_existence="none_exist" version="1" comment="Verify that there are no updates available.">
+               <x-linux-def:object object_ref="oval:org.govready.ubuntu:obj:210"/>
+          </x-linux-def:apt_test>
+     </tests>
+     <objects>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:200" version="1" comment="Object representing all Debian binary package sources for apt.">
+               <ind-def:filepath operation="equals">/etc/apt/sources.list</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">^deb(?:-src)?\s+([^\s]+)\s.+$</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+          <x-linux-def:apt_object id="oval:org.govready.ubuntu:obj:210" version="1" comment="All updates available for installed packages.">
+               <x-linux-def:behaviors mode="upgrade"/>
+               <x-linux-def:name operation="pattern match">.*</x-linux-def:name>
+          </x-linux-def:apt_object>
+     </objects>
+     <states>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:200" version="1" comment="Match against the externally sourced regex.">
+               <ind-def:subexpression operation="pattern match" var_ref="oval:org.govready.ubuntu:var:200" var_check="all"/>
+          </ind-def:textfilecontent54_state>
+     </states>
+     <variables>
+          <external_variable id="oval:org.govready.ubuntu:var:200" version="1" comment="A regular expression to match against all debian repository URIs." datatype="string"/>
+     </variables>
+</oval_definitions>

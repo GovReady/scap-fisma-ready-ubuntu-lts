@@ -1,0 +1,51 @@
+<oval_definitions 
+     xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5" 
+     xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent" 
+     xmlns:oval-def="http://oval.mitre.org/XMLSchema/oval-common-5" 
+     xmlns:unix-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#unix" 
+     xmlns:linux-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://oval.mitre.org/XMLSchema/oval-common-5 oval-common-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5 oval-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#independent independent-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#unix unix-definitions-schema.xsd   http://oval.mitre.org/XMLSchema/oval-definitions-5#macos linux-definitions-schema.xsd">
+     <generator>
+          <oval-def:product_name>GovReady.org Ubuntu 14.04 LTS Server Benchmark</oval-def:product_name>
+          <oval-def:product_version>0.0.1</oval-def:product_version>
+          <oval-def:schema_version>5.10.1</oval-def:schema_version>
+          <oval-def:timestamp>2015-01-01T13:44:00</oval-def:timestamp>
+     </generator>
+     <definitions>
+          <definition class="compliance" id="oval:org.govready.ubuntu:def:800" version="1">
+               <metadata>
+                    <title>Grub is Configured to Enable Auditing During Booting</title>
+                    <description>Check to ensure that the grub configuration file includes a directive to enable auditing.</description>
+               </metadata>
+               <criteria operator="AND">
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:800" />
+                    <criterion test_ref="oval:org.govready.ubuntu:tst:801" />
+               </criteria>
+          </definition>
+     </definitions>
+     <tests>
+          <unix-def:file_test id="oval:org.govready.ubuntu:tst:800" version="1" check_existence="at_least_one_exists" check="at least one" comment="The grub configuration file exists.">
+               <unix-def:object object_ref="oval:org.govready.ubuntu:obj:800" />
+          </unix-def:file_test>
+          <ind-def:textfilecontent54_test id="oval:org.govready.ubuntu:tst:801" version="1" check_existence="at_least_one_exists" check="at least one" comment="grub is configured to enable auditing on boot">
+               <ind-def:object object_ref="oval:org.govready.ubuntu:obj:801" />
+               <ind-def:state state_ref="oval:org.govready.ubuntu:ste:801" />
+          </ind-def:textfilecontent54_test>
+     </tests>
+     <objects>
+          <unix-def:file_object id="oval:org.govready.ubuntu:obj:800" version="1" comment="The grub configuration file: '/etc/default/grub'">
+               <unix-def:filepath>/etc/default/grub</unix-def:filepath>
+          </unix-def:file_object>
+          <ind-def:textfilecontent54_object id="oval:org.govready.ubuntu:obj:801" version="1" comment="The GRUB_CMDLINE_LINUX directive setting in the grub configuration file: '/etc/default/grub'">
+               <ind-def:behaviors multiline="true" singleline="false" />               
+               <ind-def:filepath>/etc/default/grub</ind-def:filepath>
+               <ind-def:pattern operation="pattern match">(?&lt;=\n|^)\s*GRUB_CMDLINE_LINUX\s*=.*(?=\n|$)</ind-def:pattern>
+               <ind-def:instance datatype="int" operation="greater than or equal">1</ind-def:instance>
+          </ind-def:textfilecontent54_object>
+     </objects>
+     <states>
+          <ind-def:textfilecontent54_state id="oval:org.govready.ubuntu:ste:801" version="1" comment="Matches the line: 'GRUB_CMDLINE_LINUX=&quot;audit=1&quot;'">
+               <ind-def:text operation="pattern match">^\s*GRUB_CMDLINE_LINUX\s*=\s*"audit=1"\s*$</ind-def:text>
+          </ind-def:textfilecontent54_state>
+     </states>
+</oval_definitions>
